@@ -1,3 +1,5 @@
+import { Inertia } from "@inertiajs/inertia";
+
 require('./bootstrap');
 
 import { createApp, h } from 'vue';
@@ -13,12 +15,17 @@ createInertiaApp({
     setup({ el, app, props, plugin }) {
         return createApp({ render: () => h(app, props) })
             .use(plugin)
-            .use(Toaster)
+            .use(Toaster, {
+                duration: 10000,
+                maxToasts: 5,
+            })
             .component('XLink', Link)
             .component('XHead', Head)
             .mixin({ methods: { route } })
             .mount(el);
     },
-}).then(() => {});
+}).then(() => {
+
+});
 
 InertiaProgress.init({ color: '#3399ff' });

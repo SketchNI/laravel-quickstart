@@ -9,7 +9,7 @@ window._ = require('lodash');
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-window.axios.defaults.headers.common['X-User-Agent'] = 'Axios with InertiaJS and VueJS';
+window.axios.defaults.headers.common['X-User-Agent'] = 'axios/0';
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
