@@ -1,5 +1,5 @@
 <script setup>
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import { useForm } from '@inertiajs/inertia-vue3';
 import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue';
 import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
 import JetButton from '@/Jetstream/Button.vue';
@@ -11,6 +11,7 @@ import JetValidationErrors from '@/Jetstream/ValidationErrors.vue';
 const form = useForm({
     name: '',
     email: '',
+    username: '',
     password: '',
     password_confirmation: '',
     terms: false,
@@ -24,7 +25,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Register" />
+    <x-head title="Register" />
 
     <JetAuthenticationCard>
         <template #logo>
@@ -41,9 +42,19 @@ const submit = () => {
                     v-model="form.name"
                     type="text"
                     class="mt-1 block w-full"
-                    required
                     autofocus
                     autocomplete="name"
+                />
+            </div>
+
+            <div class="mt-4">
+                <JetLabel for="username" value="Username" />
+                <JetInput
+                    id="username"
+                    v-model="form.username"
+                    type="text"
+                    class="mt-1 block w-full"
+                    autocomplete="username"
                 />
             </div>
 
@@ -54,7 +65,6 @@ const submit = () => {
                     v-model="form.email"
                     type="email"
                     class="mt-1 block w-full"
-                    required
                 />
             </div>
 
@@ -65,7 +75,6 @@ const submit = () => {
                     v-model="form.password"
                     type="password"
                     class="mt-1 block w-full"
-                    required
                     autocomplete="new-password"
                 />
             </div>
@@ -77,7 +86,6 @@ const submit = () => {
                     v-model="form.password_confirmation"
                     type="password"
                     class="mt-1 block w-full"
-                    required
                     autocomplete="new-password"
                 />
             </div>
@@ -95,9 +103,9 @@ const submit = () => {
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <x-link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
                     Already registered?
-                </Link>
+                </x-link>
 
                 <JetButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Register

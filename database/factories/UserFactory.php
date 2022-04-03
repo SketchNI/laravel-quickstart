@@ -25,7 +25,9 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+            'uuid' => $this->faker->uuid(),
             'name' => $this->faker->name(),
+            'username' => Str::replace('.', '_', $this->faker->userName()),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$argon2id$v=19$m=65536,t=4,p=1$bGpMZ2pJa21uZFhMMjRDbw$zeYtF2uIpyPTVPCVAHycTSiJ6farYdaIAdQQj7t8Zas', // password
