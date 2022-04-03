@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Traits\HasUuid;
+use App\Traits\Sluggable;
+
 use Database\Factories\UserFactory;
 use Eloquent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -64,6 +67,7 @@ use Laravel\Sanctum\PersonalAccessToken;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
+    use HasUuid;
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
