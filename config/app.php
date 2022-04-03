@@ -167,6 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Intervention\Image\ImageServiceProviderLaravelRecent::class,
 
         /*
          * Application Service Providers...
@@ -175,9 +176,11 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
+        App\Providers\HorizonServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
 
     ],
 
@@ -193,7 +196,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ])->toArray(),
 
 ];

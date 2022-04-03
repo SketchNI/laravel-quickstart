@@ -1,2 +1,6 @@
 *
 !.gitignore
+!avatars
+!images
+!uploads
+!videos
